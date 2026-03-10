@@ -10,7 +10,7 @@ REST API untuk manajemen produk dengan authentication JWT, dibangun menggunakan 
 - Memory Cache
 - Rate Limiting (built-in ASP.NET Core)
 - Docker & Docker Compose
-- Swagger UI
+- Postman
 
 ---
 
