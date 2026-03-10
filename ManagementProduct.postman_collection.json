@@ -1,0 +1,317 @@
+{
+  "info": {
+    "_postman_id": "ecf0c442-435e-4bca-be62-9df6a3dbda4f",
+    "name": "ManagementProduct",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15488665",
+    "_collection_link": "https://go.postman.co/collection/15488665-ecf0c442-435e-4bca-be62-9df6a3dbda4f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Add products",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Meja\",\r\n  \"price\": 100000,\r\n  \"description\": \"Meja Kerja\",\r\n  \"category\": \"Furnitur\",\r\n  \"images\": [\"https://www.google.com/imgres?q=meja%20termasuk%20kategori%20apa&imgurl=x-raw-image%3A%2F%2F%2F2c39d6f4099e2b05b980bb35133b92e5c0375a14ed7c642c0e53ba139f944c54&imgrefurl=https%3A%2F%2Fgudangfurniture.com%2Fblog%2Farticle%2Fjenis-jenis-meja-kantor-yang-perlu-kamu-tahu%3Fsrsltid%3DAfmBOoqUWVp2KjNZeOsKPCxWMM7hdt0edNv-EIyZfuBpaK81qWtLb5F3&docid=fuTdQBgc23lhwM&tbnid=BSueCfTWOSxX2M&vet=12ahUKEwi2nZnw75STAxWdUGcHHZWnEP4QnPAOegQIHRAB..i&w=500&h=500&hcb=2&ved=2ahUKEwi2nZnw75STAxWdUGcHHZWnEP4QnPAOegQIHRAB\"]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/products",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products"
+          ]
+        },
+        "description": "**Buat produk baru.**\n\nMembutuhkan: Authorization Bearer Token\n\nRate Limit: Max 1x per 5 detik\n\nValidasi wajib:\n\n- title: wajib diisi\n    \n- price: wajib, harus lebih dari 0\n    \n- category: wajib diisi\n    \n- images: wajib, minimal 1 URL"
+      },
+      "response": []
+    },
+    {
+      "name": "Registrasi",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"santo123\",\r\n  \"password\": \"password123\",\r\n  \"PasswordConfirmation\": \"password123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/auth/register",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        },
+        "description": "Register user baru.\n\nRate Limit: Max 3x per 60 detik\n\nValidasi:\n\n- username: wajib, minimal 3 karakter\n    \n- password: wajib, minimal 6 karakter\n    \n- passwordconfirmation: harus sama dengan password"
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {\r",
+              "    const res = pm.response.json();\r",
+              "    pm.collectionVariables.set(\"token\", res.authenticationToken);\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"santo123\",\r\n  \"password\": \"password123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/auth/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "**Login dan dapatkan JWT token.**\n\nRate Limit: Max 3x per 60 detik\n\nToken akan dikembalikan dalam field authenticationToken.  \nGunakan token ini di header Authorization: Bearer {token}  \nuntuk mengakses endpoint yang membutuhkan autentikasi."
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Product",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/products",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get By Id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/products/2",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edit Product",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Updated T-Shirt\",\r\n  \"price\": 149.99\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/products/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "1"
+          ]
+        },
+        "description": "Update produk berdasarkan ID.\n\nMembutuhkan: Authorization Bearer Token\n\nRate Limit: Max 1x per 5 detik\n\nSemua field bersifat opsional (partial update).  \nHanya field yang dikirim yang akan diupdate."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Get with filter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/products?search=shirt&category=Clothes&page=1&limit=5",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "shirt"
+            },
+            {
+              "key": "category",
+              "value": "Clothes"
+            },
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete product",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/products/2",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "2"
+          ]
+        },
+        "description": "Hapus produk berdasarkan ID.\n\nMembutuhkan: Authorization Bearer Token\n\nRate Limit: Max 1x per 5 detik"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
