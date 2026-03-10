@@ -32,7 +32,7 @@ Pastikan sudah terinstall salah satu dari:
 1. Clone repository
 ```bash
    git clone 
-   cd ProductAPI
+   cd ManagementProduct
 ```
 
 2. Restore dependencies
@@ -47,17 +47,17 @@ Pastikan sudah terinstall salah satu dari:
 
 4. API berjalan di:
 ```
-   http://localhost:7030
+   http://localhost:7030  
 ```
-
+atau sesuaikann dengan port di locall anda
 ---
 
 ### B. Jalankan dengan Docker
 
 1. Clone repository
 ```bash
-   git clone https://github.com/YOUR_USERNAME/ProductAPI.git
-   cd ProductAPI
+   git clone https://github.com/santo02/ManagementProductAPI.git
+   cd ManagementProduct
 ```
 
 2. Build dan jalankan container
@@ -121,7 +121,7 @@ Pastikan sudah terinstall salah satu dari:
 2. Buka Postman → klik **Import**
 3. Pilih file tersebut → klik **Import**
 4. Set variable `base_url` sesuai environment:
-   - Lokal: `http://localhost:7030`
+   - Lokal: `http://localhost:7030` atau sesuiakan dengan port lokal anda
    - Docker: `http://localhost:8080`
 
 ### Cara Menggunakan Token di Postman
