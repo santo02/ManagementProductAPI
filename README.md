@@ -31,7 +31,7 @@ Pastikan sudah terinstall salah satu dari:
 
 1. Clone repository
 ```bash
-   git clone 
+   git clone https://github.com/santo02/ManagementProductAPI.git
    cd ManagementProduct
 ```
 
@@ -56,7 +56,7 @@ atau sesuaikann dengan port di locall anda
 
 1. Clone repository
 ```bash
-   git clone https://github.com/santo02/ManagementProductAPI.git
+   git clone c
    cd ManagementProduct
 ```
 
